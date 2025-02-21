@@ -11,7 +11,8 @@ load_dotenv()
 app = Flask(__name__)
 
 # Enable CORS for frontend requests
-CORS(app, resources={r"/generate-thread": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/generate-thread": {"origins": "https://twitter-thread-generator-t34b.vercel.app"}})
+
 
 # Initialize Groq client
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
@@ -71,4 +72,5 @@ def generate_thread():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True, host="127.0.0.1", port=5000)
+    port = int(os.environ.get("PORT", 5000))  # Get the assigned PORT from Render
+    app.run(debug=True, host="0.0.0.0", port=port)
