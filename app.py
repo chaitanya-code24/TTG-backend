@@ -54,7 +54,7 @@ def blog_to_tweets(blog_text):
 
     return [tweet.strip() for tweet in tweets if tweet.strip()]
 
-@app.route("/generate-thread", methods=["POST"])
+@app.route("/", methods=["GET"])
 def generate_thread():
     """
     API endpoint to generate a Twitter thread from a blog.
