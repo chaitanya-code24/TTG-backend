@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # Enable CORS for frontend requests
-CORS(app, resources={r"/generate-thread": {"origins": "https://twitter-thread-generator-t34b.vercel.app"}})
+CORS(app, resources={r"/": {"origins": "https://twitter-thread-generator-t34b.vercel.app"}})
 
 
 # Initialize Groq client
