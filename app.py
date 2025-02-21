@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # Enable CORS for frontend requests
-CORS(app, resources={r"/": {"origins": "https://twitter-thread-generator-t34b.vercel.app"}})
+CORS(app, resources={r"/generate-thread": {"origins": "https://twitter-thread-generator-t34b.vercel.app"}})
 
 
 # Initialize Groq client
@@ -54,7 +54,7 @@ def blog_to_tweets(blog_text):
 
     return [tweet.strip() for tweet in tweets if tweet.strip()]
 
-@app.route("/", methods=["GET"])
+@app.route("/generate-thread", methods=["POST"])
 def generate_thread():
     """
     API endpoint to generate a Twitter thread from a blog.
